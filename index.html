@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Chat Application</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket=io();
+        socket.emit("obj","Welcome Server");
+        socket.on("server",(msg)=>{
+           // console.log(msg);
+            document.getElementById("msg").innerHTML=msg;
+            let pTag1=document.createElement("p");
+            document.getElementById('msgDiv').appendChild(pTag1);
+            pTag1.innerText="SERVER : "+msg;
+        });
+       function sendMessage(){
+        //   document.getElementById("chatForm").submit();
+        if(document.getElementById('chat_msg').value){
+           socket.emit("chatmessage",document.getElementById('chat_msg').value);
+            let pTag=document.createElement("p");
+            pTag.setAttribute('id','msg_span');
+            document.getElementById('msgDiv').appendChild(pTag);
+            pTag.innerText="You: "+document.getElementById('chat_msg').value;
+           document.getElementById("chat_msg").value='';
+        }else{
+            console.log("enter some message");
+        }
+        }
+    </script>
+</head>
+<body>
+    
+    <article>
+    <div>
+   
+        <h1>Chat Application</h1>
+        <a href="http://localhost:3000/api/showchat"><button id="show_all">Show All chat</button></a>
+        <a href="http://localhost:3000/api/downloadchat"><button id="download_all">Download chat</button></a>
+        <p id="msg"></p>
+        <div id="msgDiv"></div>
+        <input type="text" name="chatmsg" id="chat_msg" />
+        <input type="button" value="Send Message" onclick="sendMessage()" />
+   
+</div>
+</article>
+</body>
+</html>

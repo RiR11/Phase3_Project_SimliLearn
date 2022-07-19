@@ -1,0 +1,36 @@
+h1{
+    text-align: left;
+    color:green;
+    padding-top: 10px;
+    padding-left: 130px;
+    
+}
+
+button{
+    text-align:center;
+    width:20%;
+    font-size: 1.2em;
+    padding: 5px;
+    color:gold;
+    background-color: teal;
+    
+}
+input{
+    text-align:left;
+    width:20%;
+    font-size: 1.2em;
+    padding: 5px;
+    color:brown;
+    background-color:whitesmoke;
+}
+div#msgDiv{
+color: blue;
+}
+article{
+    
+    box-shadow: inset rgb(71,71,71) -10px -10px 25px,
+                   inset rgb(71,71,71) 10px 10px 25px;
+
+                   
+                   padding-left: 400px;
+}
